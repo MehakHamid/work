@@ -9,7 +9,8 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="bg-blue-600 p-4 shadow-md fixed w-full z-50">
+    <header className="sticky top-0 z-50 bg-blue-600 p-4 shadow-md">
+
       <div className="container mx-auto flex justify-between items-center">
         {/* Brand Logo */}
         <h1 className="text-white text-xl font-bold">Trion UPS</h1>
