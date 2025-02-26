@@ -1,11 +1,12 @@
 "use client"
 import { useState } from "react";
 
-const errorCodes = {
+const errorCodes: Record<string, string> = {
   "E01": "Overload detected. Reduce connected devices.",
   "E02": "Battery voltage low. Check battery health.",
   "E03": "High temperature. Ensure proper ventilation.",
 };
+
 
 export default function Troubleshooting() {
   const [errorCode, setErrorCode] = useState("");
