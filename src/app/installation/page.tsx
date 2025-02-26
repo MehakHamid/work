@@ -34,8 +34,8 @@ const InverterInstallation = () => {
               <li>Ensure tight connections to prevent power loss.</li>
             </ul>
           </li>
-          <li><strong>AC Power Input Connection:</strong> Connect the inverter’s AC input to the mains power supply (for non-solar inverters).</li>
-          <li><strong>Load Connection:</strong> Connect essential appliances to the inverter’s output terminals.</li>
+          <li><strong>AC Power Input Connection:</strong> Connect the inverter&rsquo;s AC input to the mains power supply (for non-solar inverters).</li>
+          <li><strong>Load Connection:</strong> Connect essential appliances to the inverter&rsquo;s output terminals.</li>
           <li><strong>Testing:</strong> Turn on the inverter and check if appliances are receiving power.</li>
         </ol>
       </section>
@@ -46,7 +46,7 @@ const InverterInstallation = () => {
           <li><strong>Ensure Proper Ventilation:</strong> Overheating may damage the inverter; install in a cool, open space.</li>
           <li><strong>Use Correct Wire Gauge:</strong> Avoid voltage drops and overheating by using appropriate wire sizes.</li>
           <li><strong>Secure Connections:</strong> Loose connections can cause sparking or failure.</li>
-          <li><strong>Avoid Overloading:</strong> Ensure connected appliances do not exceed the inverter's capacity.</li>
+          <li><strong>Avoid Overloading:</strong> Ensure connected appliances do not exceed the inverter&rsquo;s capacity.</li>
           <li><strong>Periodic Maintenance:</strong> Clean battery terminals and check electrolyte levels regularly.</li>
         </ul>
       </section>
