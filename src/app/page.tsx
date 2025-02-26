@@ -57,7 +57,8 @@ export default function Home() {
         <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} className="max-w-3xl mx-auto">
           {reviews.map((review, index) => (
             <div key={index} className="bg-white p-6 shadow-lg rounded-lg text-center">
-              <p className="italic text-gray-700">"{review.text}"</p>
+              <p className="italic text-gray-700">&ldquo;{review.text}&rdquo;</p>
+
               <div className="flex justify-center mt-3">
                 {[...Array(review.rating)].map((_, i) => (
                   <FaStar key={i} className="text-yellow-400" />
