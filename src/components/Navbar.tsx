@@ -1,89 +1,81 @@
 "use client"
 import Link from "next/link";
-import { useState, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [isProductOpen, setIsProductOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement | null>(null);
+const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const handleProductClick = () => {
-        setIsProductOpen(prev => !prev); // Toggle the product dropdown
-    };
+  return (
+    <header className="bg-blue-600 p-4 shadow-md">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Brand Logo */}
+        <h1 className="text-white text-xl font-bold">Trion UPS</h1>
 
-    const handleMouseLeave = (e: React.MouseEvent) => {
-        if (dropdownRef.current && !dropdownRef.current.contains(e.relatedTarget as Node)) {
-            setIsProductOpen(false); // Close if the mouse leaves the dropdown area
-        }
-    };
+        {/* Hamburger Menu for Mobile */}
+        <button
+          className="md:hidden text-white text-2xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
 
-    return (
-        <nav className="bg-blue-500 p-4 shadow-md">
-            <div className="container mx-auto flex items-center justify-between">
-                <div className="text-white text-2xl font-bold">Trion</div>
-                
-                <div className="hidden md:flex space-x-6 mx-auto relative">
-                    <Link href="/" className="text-white hover:text-gray-300">Home</Link>
-                    <Link href="/about" className="text-white hover:text-gray-300">About Us</Link>
-                    <div 
-                        className="relative"
-                        onMouseEnter={() => setIsProductOpen(true)}  // Open on hover
-                        onMouseLeave={handleMouseLeave} // Close on hover out but only when necessary
-                    >
-                        <button 
-                            className="text-white hover:text-gray-300 flex items-center" 
-                            onClick={handleProductClick} // Toggle on click
-                        >
-                            Product <ChevronDown size={18} className="ml-1" />
-                        </button>
-                        {isProductOpen && (
-                            <div 
-                                ref={dropdownRef}
-                                className="absolute left-0 mt-2 w-40 bg-blue-600 text-white rounded-md shadow-lg"
-                                onMouseLeave={handleMouseLeave} // Close when mouse leaves the dropdown
-                            >
-                                <Link href="/conectseries" className="block px-4 py-2 hover:bg-blue-700">Connect Series</Link>
-                                <Link href="/wiseseries" className="block px-4 py-2 hover:bg-blue-700">Wise Series</Link>
-                                <Link href="/wiseplusseries" className="block px-4 py-2 hover:bg-blue-700">Wise Plus Series</Link>
-                                <Link href="/solplanet" className="block px-4 py-2 hover:bg-blue-700">Solplanet</Link>
-                            </div>
-                        )}
-                    </div>
-                    <Link href="/contact" className="text-white hover:text-gray-300">Contact Us</Link>
-                </div>
-                
-                <button 
-                    className="md:hidden text-white" 
-                    onClick={() => setIsOpen(!isOpen)}
-                >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
-
-            {isOpen && (
-                <div className="md:hidden flex flex-col space-y-4 bg-blue-600 p-4 text-center">
-                    <Link href="/" className="text-white hover:text-gray-300">Home</Link>
-                    <Link href="/about" className="text-white hover:text-gray-300">About Us</Link>
-                    <div className="relative">
-                        <button 
-                            className="text-white hover:text-gray-300" 
-                            onClick={handleProductClick} // Toggle on click for mobile
-                        >
-                            Product
-                        </button>
-                        {isProductOpen && (
-                            <div className="bg-blue-700 text-white p-2 rounded-md">
-                                <Link href="/conectseries" className="block px-4 py-2 hover:bg-blue-800">Connect Series</Link>
-                                <Link href="/wiseseries" className="block px-4 py-2 hover:bg-blue-800">Wise Series</Link>
-                                <Link href="/wiseplusseries" className="block px-4 py-2 hover:bg-blue-800">Wise Plus Series</Link>
-                                <Link href="/solplanet" className="block px-4 py-2 hover:bg-blue-800">Solplanet</Link>
-                            </div>
-                        )}
-                    </div>
-                    <Link href="/contact" className="text-white hover:text-gray-300">Contact Us</Link>
-                </div>
-            )}
+        {/* Navigation Links */}
+        <nav
+          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-blue-600 md:bg-transparent md:flex transition-all ${
+            menuOpen ? "block" : "hidden"
+          }`}
+        >
+          <ul className="md:flex space-y-4 md:space-y-0 md:space-x-6 text-center md:text-left">
+            <li>
+              <Link href="/" className="text-white hover:underline">Home</Link>
+            </li>
+            <li>
+              <Link href="/installation" className="text-white hover:underline">Installation</Link>
+            </li>
+            <li>
+              <Link href="/feature" className="text-white hover:underline">Features</Link>
+            </li>
+            <li className="relative">
+              {/* Dropdown Button */}
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="text-white hover:underline flex items-center"
+              >
+                Services ▾
+              </button>
+              {/* Dropdown Menu */}
+              <ul
+                className={`absolute bg-white text-black w-40 p-2 shadow-lg rounded-md mt-1 ${
+                  dropdownOpen ? "block" : "hidden"
+                }`}
+              >
+                <li>
+                  <Link href="/troubleshooting" className="block px-3 py-1 hover:bg-gray-200">
+                    Troubleshooting
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className="block px-3 py-1 hover:bg-gray-200">
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/service" className="block px-3 py-1 hover:bg-gray-200">
+                    Service
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Link href="/contact" className="text-white hover:underline">Contact</Link>
+            </li>
+          </ul>
         </nav>
-    );
-}
+      </div>
+    </header>
+  );
+};
+
+export default Header;

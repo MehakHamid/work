@@ -61,6 +61,17 @@ body {
     --chart-5: 340 75% 55%;
   }
 }
+.service-card {
+  @apply bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:scale-105 cursor-pointer;
+}
+
+.review-card {
+  @apply bg-white p-4 rounded-lg shadow-md text-center;
+}
+.feature-card {
+  @apply bg-white p-6 rounded-lg shadow-md text-center transition-transform transform hover:scale-105 cursor-pointer;
+}
+
 
 @layer base {
   * {
