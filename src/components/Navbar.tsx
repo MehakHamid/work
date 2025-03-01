@@ -50,6 +50,9 @@ const Header = () => {
                   <Link href="/feature" className="hover:underline" onClick={() => setMenuOpen(false)}>Features</Link>
                 </li>
                 <li>
+                  <Link href="/model" className="hover:underline" onClick={() => setMenuOpen(false)}>Models</Link>
+                </li>
+                <li>
                   <button
                     onClick={() => setDropdownOpen(!dropdownOpen)}
                     className="hover:underline flex items-center"
@@ -97,6 +100,7 @@ const Header = () => {
           <Link href="/" className="text-white hover:underline">Home</Link>
           <Link href="/installation" className="text-white hover:underline">Installation</Link>
           <Link href="/feature" className="text-white hover:underline">Features</Link>
+          <Link href="/model" className="text-white hover:underline">Models</Link>
           <div className="relative">
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
