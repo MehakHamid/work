@@ -20,7 +20,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 1 }}
         className="relative w-full h-[90vh] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
-        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        style={{ backgroundImage: "url('/main.jpg')" }}
       >
         <div className="absolute inset-0 bg-blue-800 bg-opacity-70"></div>
         <div className="relative z-10">
