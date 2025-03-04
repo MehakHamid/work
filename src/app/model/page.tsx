@@ -1,133 +1,145 @@
-"use client";
+import React from "react";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+const benefits = [
+  "Reliable & Efficient Power Backup – Stable performance for all needs",
+  "Advanced Safety Features – Protection against overload and short circuits",
+  "Smart Monitoring – LCD display for easy status checks",
+  "Energy-Saving Technology – Reduces electricity costs",
+  "Intelligent Battery Protection – Multiple battery management included in all models, BMS available in Wise-3004 and above",
+  "Three-Phase Compatibility – Available in Wise-4004 and above for high-power applications",
+  "Optimized Solar Integration – MPPT range 30V - 80V for Wise-1201 & Wise-2001, and 60V - 450V for Wise-3004 & above",
+  "Dual Load Option – Available from Wise-3604 & above for efficient power distribution",
+  "WiFi Monitoring (Built-in) – Available from Wise-4004 & above for remote system tracking",
+  "Dual MPPT Feature – Available in Wise-8004 for enhanced solar energy utilization",
+  "Supports Essential Appliances – From small home devices to large air conditioners",
+];
 
 const models = [
   {
-    id: 1,
-    name: "CONNECT-1201",
-    capacity: "1000W",
+    name: "Wise-1201",
+    power: "1KVA",
     features: [
-      "1200VA/1000W/12VDC/240VAC",
-      "Wide input voltage range 90-280 VAC",
-      "Overload and short circuit protection",
-      "LCD & LED display Indicator",
-      "Charge current varies 0A - 25 Ampere Selectable",
-      "Alarm for Low Battery, Overload, Fault indication"
+      "Pure Sine Wave Output",
+      "Fast Battery Charging",
+      "Multiple Battery Management",
+      "MPPT Range: 30V - 80V",
     ],
-    suitable: "25 LED Bulb OR 8 LED Tubelights and 5 Fans"
+    suitableFor: "LED bulbs, TV, WiFi router, laptop, small fans, desktop PC",
   },
   {
-    id: 2,
-    name: "CONNECT-2201",
-    capacity: "2200VA / 1800W",
+    name: "Wise-2001",
+    power: "2KVA",
     features: [
-      "2200VA/1800W/24VDC/240VAC",
-      "Wide input voltage range 90-280 VAC",
-      "Overload and short circuit protection",
-      "LCD & LED display Indicator",
-      "Charge current varies 0A - 20 Ampere Selectable",
-      "Alarm for Low Battery, Overload, Fault indication"
+      "LCD Display",
+      "Overload & Short Circuit Protection",
+      "Multiple Battery Management",
+      "MPPT Range: 30V - 80V",
     ],
-    suitable: "50 LED Bulb OR 15 LED Tubelights and 12 Fans"
+    suitableFor: "LED bulbs, TV, WiFi router, laptop, desktop PC, ceiling fan, fridge (small)",
   },
   {
-    id: 3,
-    name: "WISE-1201",
-    capacity: "1000W",
+    name: "Wise-3004",
+    power: "3KVA",
     features: [
-      "MPPT modified sine wave inverter with 70A MPPT Charger",
-      "Maximum PV Array Power 960W",
-      "Wide input voltage range: 90-280 VAC",
-      "Overload and short circuit protection",
-      "3-stage charger control for effective charging while preventing overcharging",
-      "Thermal protection",
-      "LCD & LED RGB display indicator"
+      "Smart Cooling System",
+      "Battery Management System (BMS)",
+      "MPPT Range: 60V - 450V",
     ],
-    suitable: "25 LED Bulb OR 8 LED Tubelights and 5 Fans"
+    suitableFor: "LED bulbs, TV, multiple fans, laptop, desktop PC, refrigerator (medium), water pump (small)",
   },
   {
-    id: 4,
-    name: "WISE-2001",
-    capacity: "1800W",
+    name: "Wise-3604",
+    power: "3.6KVA",
     features: [
-      "MPPT modified sine wave inverter with 70A MPPT Charger",
-      "Maximum PV Array Power 1650W",
-      "Wide input voltage range: 90-280 VAC",
-      "Overload and short circuit protection",
-      "3-stage charger control for effective charging while preventing overcharging",
-      "Thermal protection",
-      "LCD & LED RGB display indicator"
+      "Hybrid Functionality",
+      "Surge & Spike Protection",
+      "Battery Management System (BMS)",
+      "MPPT Range: 60V - 450V",
+      "Dual Load Option",
     ],
-    suitable: "50 LED Bulb OR 15 LED Tubelights and 12 Fans"
-  }
+    suitableFor: "LED bulbs, TV, multiple fans, laptop, desktop PC, refrigerator (medium-large), water pump (medium), iron (occasional use)",
+  },
+  {
+    name: "Wise-4004",
+    power: "4KVA",
+    features: [
+      "Pure Sine Wave Technology",
+      "Auto Restart Function",
+      "Battery Management System (BMS)",
+      "MPPT Range: 60V - 450V",
+      "Three-Phase Compatibility",
+      "WiFi Monitoring (Built-in)",
+    ],
+    suitableFor: "LED bulbs, multiple TVs, ceiling fans, laptop, desktop PC, refrigerator (large), deep freezer, washing machine, water pump (medium-large), air cooler, iron (regular use)",
+  },
+  {
+    name: "Wise-6004",
+    power: "6KVA",
+    features: [
+      "Heavy Load Capacity",
+      "Multiple Battery Configuration Options",
+      "Battery Management System (BMS)",
+      "MPPT Range: 60V - 450V",
+      "Three-Phase Compatibility",
+      "Dual Load Option",
+      "WiFi Monitoring (Built-in)",
+    ],
+    suitableFor: "LED bulbs, multiple TVs, ceiling fans, refrigerators, deep freezer, water pump (large), washing machine, air cooler, 1-TON air conditioner (split unit), microwave, iron (frequent use)",
+  },
+  {
+    name: "Wise-8004",
+    power: "8KVA",
+    features: [
+      "Three-Phase Compatibility",
+      "Industrial-Grade Components",
+      "Battery Management System (BMS)",
+      "MPPT Range: 60V - 450V",
+      "Dual MPPT Feature",
+      "Dual Load Option",
+      "WiFi Monitoring (Built-in)",
+    ],
+    suitableFor: "LED bulbs, multiple TVs, ceiling fans, refrigerators, deep freezer, washing machine, large water pump, 1.5 to 2-TON air conditioner (split unit), microwave, heavy iron use, industrial appliances",
+  },
 ];
 
-export default function ModelsPage() {
-  const [selectedModel, setSelectedModel] = useState(null);
-
+const ModelCard = ({ model }: { model: any }) => {
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
-        Our Models
-      </h1>
-
-      {/* Model Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {models.map((model) => (
-          <motion.div
-            key={model.id}
-            className="bg-white shadow-md rounded-lg p-4 cursor-pointer hover:shadow-xl transition-all"
-            whileHover={{ scale: 1.05 }}
-            onClick={() => setSelectedModel(model)}
-          >
-            <h2 className="text-xl font-semibold">{model.name}</h2>
-            <p className="text-gray-600">{model.capacity}</p>
-          </motion.div>
+    <div className="bg-gradient-to-br from-[#004AAD] to-[#20ebf1] shadow-lg rounded-2xl p-6 m-4 w-full md:w-1/2 lg:w-1/3 transition transform hover:scale-105 hover:shadow-2xl duration-300 ease-in-out text-white">
+      <h2 className="text-xl font-bold">{model.name} - {model.power}</h2>
+      <ul className="mt-2">
+        {model.features.map((feature: string, index: number) => (
+          <li key={index} className="flex items-center gap-2">✅ {feature}</li>
         ))}
-      </div>
-
-      {/* Modal for Model Details with Animation */}
-      <AnimatePresence>
-        {selectedModel && (
-          <motion.div
-            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setSelectedModel(null)}
-          >
-            <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking inside
-            >
-              <button
-                className="absolute top-2 right-2 text-gray-700 hover:text-red-500"
-                onClick={() => setSelectedModel(null)}
-              >
-                ✖
-              </button>
-              <h2 className="text-xl font-bold mb-3">{selectedModel.name}</h2>
-              <p className="text-gray-600 mb-2">
-                <strong>Capacity:</strong> {selectedModel.capacity}
-              </p>
-              <ul className="list-disc pl-5 text-gray-700">
-                {selectedModel.features.map((feature, index) => (
-                  <li key={index}>{feature}</li>
-                ))}
-              </ul>
-              <p className="mt-4 text-green-700">
-                <strong>Suitable for:</strong> {selectedModel.suitable}
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </ul>
+      <p className="mt-3 text-sm">
+        <strong>Suitable For:</strong> {model.suitableFor}
+      </p>
     </div>
   );
-}
+};
+
+const ModelsPage = () => {
+  return (
+    <div className="min-h-screen bg-[#121212] text-gray-100 p-8">
+      <h1 className="text-4xl font-bold text-center text-white">Trion WISE Series - Advanced Power Backup Solutions</h1>
+      <p className="text-center text-gray-300 mt-2">Uninterrupted Power for Homes & Businesses</p>
+      
+      <div className="bg-gradient-to-r from-[#00274D] to-[#00509E] shadow-md rounded-lg p-6 mt-6">
+        <h2 className="text-2xl font-semibold text-white text-center">Why Choose Trion WISE Series?</h2>
+        <ul className="list-disc text-gray-300 mt-4 space-y-2 px-6">
+          {benefits.map((benefit, index) => (
+            <li key={index} className="hover:text-blue-500 transition duration-200">✅ {benefit}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="flex flex-wrap justify-center mt-6">
+        {models.map((model, index) => (
+          <ModelCard key={index} model={model} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ModelsPage;
