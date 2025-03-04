@@ -1,6 +1,6 @@
 "use client";
 
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaBolt, FaBatteryFull, FaDollarSign } from "react-icons/fa";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Link from "next/link";
@@ -13,56 +13,62 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0, y: -50 }} 
         animate={{ opacity: 1, y: 0 }} 
         transition={{ duration: 1 }}
-        className="bg-blue-700 text-white text-center py-20 px-6"
+        className="relative w-full h-[90vh] bg-cover bg-center flex flex-col justify-center items-center text-white text-center px-6"
+        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
       >
-        <h1 className="text-5xl font-extrabold">Welcome to Trion UPS</h1>
-        <p className="mt-4 text-lg">Reliable Power Solutions for Your Home & Office</p>
-        <Link 
-          href="/contact" 
-          className="mt-6 inline-block bg-white text-blue-700 font-semibold py-2 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition duration-300"
-        >
-          Contact Us
-        </Link>
+        <div className="absolute inset-0 bg-blue-800 bg-opacity-70"></div>
+        <div className="relative z-10">
+          <h1 className="text-6xl font-extrabold">Powering Your Future</h1>
+          <p className="mt-4 text-lg max-w-2xl mx-auto">Reliable power solutions tailored for your needs.</p>
+          <div className="mt-6 flex gap-4 justify-center">
+            <Link href="/contact" className="bg-white text-blue-700 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-gray-200 transition">Contact Us</Link>
+          </div>
+        </div>
       </motion.div>
 
       {/* Features Section */}
-      <div className="container mx-auto p-8 text-center">
-        <h2 className="text-4xl font-extrabold text-blue-700 mb-6">Why Choose Trion UPS?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {["Reliable Backup", "Energy Efficient", "Affordable & Durable"].map((feature, index) => (
+      <div className="container mx-auto px-6 py-20 text-center">
+        <h2 className="text-4xl font-extrabold text-blue-700 mb-10">Why Choose Trion UPS?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { title: "Reliable Backup", icon: <FaBatteryFull className='text-blue-700 text-5xl' /> },
+            { title: "Energy Efficient", icon: <FaBolt className='text-green-600 text-5xl' /> },
+            { title: "Affordable & Durable", icon: <FaDollarSign className='text-yellow-500 text-5xl' /> },
+          ].map((feature, index) => (
             <motion.div 
               key={index} 
               whileHover={{ scale: 1.05 }} 
               transition={{ duration: 0.3 }}
-              className="bg-white p-6 rounded-lg shadow-lg cursor-pointer"
+              className="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center"
             >
-              <h3 className="text-2xl font-bold text-gray-800">{feature}</h3>
-              <p className="text-gray-600 mt-2">{feature === "Reliable Backup" ? "Ensure uninterrupted power with advanced UPS technology." : feature === "Energy Efficient" ? "Optimized power consumption for maximum efficiency." : "Long-lasting performance at an affordable price."}</p>
+              {feature.icon}
+              <h3 className="text-2xl font-bold text-gray-800 mt-4">{feature.title}</h3>
+              <p className="text-gray-600 mt-2">{feature.title === "Reliable Backup" ? "Ensure uninterrupted power with advanced UPS technology." : feature.title === "Energy Efficient" ? "Optimized power consumption for maximum efficiency." : "Long-lasting performance at an affordable price."}</p>
             </motion.div>
           ))}
         </div>
       </div>
 
       {/* Customer Reviews Section */}
-      <h2 className="text-4xl font-extrabold text-center text-blue-700 mt-12 mb-6">Customer Reviews</h2>
-      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} interval={4000} className="max-w-lg mx-auto">
+      <h2 className="text-4xl font-extrabold text-center text-blue-700 mt-12 mb-8">Customer Reviews</h2>
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false} interval={4000} className="max-w-3xl mx-auto">
         {reviews.map((review) => (
           <motion.div 
             key={review.id} 
             initial={{ opacity: 0, scale: 0.9 }} 
             animate={{ opacity: 1, scale: 1 }} 
             transition={{ duration: 0.5 }}
-            className="bg-white p-6 rounded-lg shadow-md text-center"
+            className="bg-white p-8 rounded-lg shadow-md text-center mx-6"
           >
             <div className="flex justify-center mb-2">
               {[...Array(review.rating)].map((_, i) => (
-                <FaStar key={i} className="text-yellow-500" />
+                <FaStar key={i} className="text-yellow-500 text-lg" />
               ))}
             </div>
             <p className="text-gray-700 italic">"{review.text}"</p>

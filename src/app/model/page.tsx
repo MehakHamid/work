@@ -120,8 +120,8 @@ const ModelCard = ({ model }: { model: any }) => {
 
 const ModelsPage = () => {
   return (
-    <div className="min-h-screen bg-[#121212] text-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-center text-white">Trion WISE Series - Advanced Power Backup Solutions</h1>
+    <div className="min-h-screen bg-[#ffffff] text-gray-600 p-8">
+      <h1 className="text-4xl font-bold text-center text-black">Trion WISE Series - Advanced Power Backup Solutions</h1>
       <p className="text-center text-gray-300 mt-2">Uninterrupted Power for Homes & Businesses</p>
       
       <div className="bg-gradient-to-r from-[#00274D] to-[#00509E] shadow-md rounded-lg p-6 mt-6">
