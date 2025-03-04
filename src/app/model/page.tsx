@@ -1,5 +1,14 @@
 import React from "react";
 
+// Define TypeScript types for the models
+interface ModelType {
+  name: string;
+  power: string;
+  features: string[];
+  suitableFor: string;
+}
+
+// List of benefits
 const benefits = [
   "Reliable & Efficient Power Backup – Stable performance for all needs",
   "Advanced Safety Features – Protection against overload and short circuits",
@@ -14,7 +23,8 @@ const benefits = [
   "Supports Essential Appliances – From small home devices to large air conditioners",
 ];
 
-const models = [
+// List of models with their details
+const models: ModelType[] = [
   {
     name: "Wise-1201",
     power: "1KVA",
@@ -102,12 +112,13 @@ const models = [
   },
 ];
 
-const ModelCard = ({ model }: { model: any }) => {
+// Model card component
+const ModelCard: React.FC<{ model: ModelType }> = ({ model }) => {
   return (
     <div className="bg-gradient-to-br from-[#004AAD] to-[#20ebf1] shadow-lg rounded-2xl p-6 m-4 w-full md:w-1/2 lg:w-1/3 transition transform hover:scale-105 hover:shadow-2xl duration-300 ease-in-out text-white">
       <h2 className="text-xl font-bold">{model.name} - {model.power}</h2>
       <ul className="mt-2">
-        {model.features.map((feature: string, index: number) => (
+        {model.features.map((feature, index) => (
           <li key={index} className="flex items-center gap-2">✅ {feature}</li>
         ))}
       </ul>
@@ -118,21 +129,28 @@ const ModelCard = ({ model }: { model: any }) => {
   );
 };
 
-const ModelsPage = () => {
+// Main page component
+const ModelsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#ffffff] text-gray-600 p-8">
-      <h1 className="text-4xl font-bold text-center text-black">Trion WISE Series - Advanced Power Backup Solutions</h1>
-      <p className="text-center text-gray-300 mt-2">Uninterrupted Power for Homes & Businesses</p>
-      
+      <h1 className="text-4xl font-bold text-center text-black">
+        Trion WISE Series - Advanced Power Backup Solutions
+      </h1>
+      <p className="text-center text-gray-300 mt-2">
+        Uninterrupted Power for Homes & Businesses
+      </p>
+
       <div className="bg-gradient-to-r from-[#00274D] to-[#00509E] shadow-md rounded-lg p-6 mt-6">
-        <h2 className="text-2xl font-semibold text-white text-center">Why Choose Trion WISE Series?</h2>
+        <h2 className="text-2xl font-semibold text-white text-center">
+          Why Choose Trion WISE Series?
+        </h2>
         <ul className="list-disc text-gray-300 mt-4 space-y-2 px-6">
           {benefits.map((benefit, index) => (
             <li key={index} className="hover:text-blue-500 transition duration-200">✅ {benefit}</li>
           ))}
         </ul>
       </div>
-      
+
       <div className="flex flex-wrap justify-center mt-6">
         {models.map((model, index) => (
           <ModelCard key={index} model={model} />

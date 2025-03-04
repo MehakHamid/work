@@ -71,7 +71,8 @@ export default function Home() {
                 <FaStar key={i} className="text-yellow-500 text-lg" />
               ))}
             </div>
-            <p className="text-gray-700 italic">"{review.text}"</p>
+            <p className="text-gray-700 italic">&quot;{review.text}&quot;</p>
+
             <p className="text-blue-700 font-semibold mt-2">- {review.name}</p>
           </motion.div>
         ))}
