@@ -72,6 +72,10 @@ const Header = () => {
                           <Link href="/troubleshooting" className="block px-3 py-1 hover:bg-gray-200">
                             Troubleshooting
                           </Link>
+                        </li><li>
+                          <Link href="/fault" className="block px-3 py-1 hover:bg-gray-200">
+                            Error Codes
+                          </Link>
                         </li>
                         <li>
                           <Link href="/faq" className="block px-3 py-1 hover:bg-gray-200">
@@ -120,6 +124,11 @@ const Header = () => {
                   <li>
                     <Link href="/troubleshooting" className="block px-3 py-1 hover:bg-gray-200">
                       Troubleshooting
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/fault" className="block px-3 py-1 hover:bg-gray-200">
+                      Error Code
                     </Link>
                   </li>
                   <li>
