@@ -62,7 +62,9 @@ const issues = [
         "Bluetooth aur WiFi on karein.",
         "Settings mein jakar app permissions check karein.",
         "Agar zaroori ho to firmware update karein.",
-      ],
+      ]
+    }
+    },
     
     {
         id: 4,
