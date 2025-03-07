@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 
 export default function FAQ() {
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
+  const [selectedQuestion, setSelectedQuestion] = useState<number | null>(null);
+  ;
   const [language, setLanguage] = useState("en"); // Default English
 
   const faqs = [
