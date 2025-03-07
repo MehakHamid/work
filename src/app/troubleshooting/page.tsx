@@ -62,107 +62,11 @@ const issues = [
         "Bluetooth aur WiFi on karein.",
         "Settings mein jakar app permissions check karein.",
         "Agar zaroori ho to firmware update karein.",
-      ]
-    }
+      ],
     },
-    
-    {
-        id: 4,
-        title: { english: "Battery Not Charging", urdu: "Battery charge nahi ho rahi" },
-        summary: { 
-          english: "Check charger, battery connections, and terminals.", 
-          urdu: "Charger, battery connections aur terminals check karein." 
-        },
-        causes: {
-          english: ["Loose battery connections", "Faulty charger", "Battery expired"],
-          urdu: ["Battery connections loose hain", "Charger kharab hai", "Battery zindagi puri kar chuki hai"],
-        },
-        solutions: {
-          english: [
-            "Tighten battery connections.",
-            "Test charger with another battery and replace if faulty.",
-            "Replace the old battery with a new one.",
-          ],
-          urdu: [
-            "Battery connections mazboot karein.",
-            "Charger ko doosri battery ke sath test karein, agar kharab ho to replace karein.",
-            "Purani battery ko naye se replace karein.",
-          ],
-        },
-      },
-      {
-        id: 5,
-        title: { english: "Low Output Voltage", urdu: "Voltage kam araha hai" },
-        summary: { 
-          english: "Reduce load and check transformer.", 
-          urdu: "Load kam karein aur transformer check karein." 
-        },
-        causes: {
-          english: ["Overloaded inverter", "Faulty transformer", "Weak battery"],
-          urdu: ["Inverter overload ho gaya", "Transformer kharab hai", "Battery weak ho rahi hai"],
-        },
-        solutions: {
-          english: [
-            "Reduce load by unplugging extra devices.",
-            "Check transformer and replace if needed.",
-            "Replace weak battery with a new one.",
-          ],
-          urdu: [
-            "Load kam karein, extra devices unplug karein.",
-            "Transformer check karein, zaroorat ho to replace karein.",
-            "Agar battery weak ho gayi hai to naye se replace karein.",
-          ],
-        },
-      },
-      {
-        id: 6,
-        title: { english: "Inverter Overheating", urdu: "Inverter zyada garam ho raha hai" },
-        summary: { 
-          english: "Ensure proper ventilation and check cooling fan.", 
-          urdu: "Behtareen ventilation ko ensure karein aur cooling fan check karein." 
-        },
-        causes: {
-          english: ["Blocked ventilation", "Faulty cooling fan", "Overloaded inverter"],
-          urdu: ["Ventilation blocked hai", "Cooling fan kharab hai", "Inverter overload ho gaya hai"],
-        },
-        solutions: {
-          english: [
-            "Place the inverter in a well-ventilated area.",
-            "Clean air vents and ensure proper airflow.",
-            "Replace faulty cooling fan if not working.",
-          ],
-          urdu: [
-            "Inverter ko ache hawadar jagah par rakhein.",
-            "Air vents saaf karein aur airflow ko behtar banayein.",
-            "Agar cooling fan kaam nahi kar raha to replace karein.",
-          ],
-        },
-      },
-      {
-        id: 7,
-        title: { english: "Inverter Not Turning On", urdu: "Inverter on nahi ho raha" },
-        summary: { 
-          english: "Check power supply, fuse, and internal circuits.", 
-          urdu: "Power supply, fuse aur internal circuits check karein." 
-        },
-        causes: {
-          english: ["Blown fuse", "No power supply", "Internal circuit failure"],
-          urdu: ["Fuse blown ho gaya hai", "Power supply nahi mil rahi", "Internal circuit fail ho gaya hai"],
-        },
-        solutions: {
-          english: [
-            "Replace the blown fuse with a new one.",
-            "Check power source and ensure stable electricity supply.",
-            "Consult a technician for internal circuit repair.",
-          ],
-          urdu: [
-            "Blown fuse ko naye se replace karein.",
-            "Power source check karein aur stable supply ensure karein.",
-            "Internal circuit repair ke liye technician se rujoo karein.",
-          ],
-        },
-      }
-]
+  },
+];
+
 export default function TroubleshootingPage() {
   const [language, setLanguage] = useState("english");
   const [selectedIssue, setSelectedIssue] = useState(null);
@@ -224,8 +128,11 @@ export default function TroubleshootingPage() {
             ))}
           </ul>
 
-          <button onClick={() => setSelectedIssue(null)} className="mt-6 px-4 py-2 bg-blue-500 text-white rounded">
-            🔙 {language === "english" ? "Back to Issues" : "Masail Par Wapas Jayein"}
+          <button
+            onClick={() => setSelectedIssue(null)}
+            className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            {language === "english" ? "Back to List" : "Wapas List Par Jayein"}
           </button>
         </div>
       )}
