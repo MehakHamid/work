@@ -30,13 +30,14 @@ export default function ServiceCenterDetails() {
                     </thead>
                     <tbody>
                         {[
-                            { id: 1, branch: "ISB", name: "Imran", contact: "0300-5056354", address: "H# 845, near Holy Family Road, Block F Satellite Town, Rawalpindi" },
-                            { id: 2, branch: "MUX", name: "Mazher", contact: "0306-6849255", address: "Shop # 383,384,385/A Shams Abad Colony Block A Opposite Jamia Masjid Mehria Multan" },
+                            { id: 1, branch: "ISB", name: "Imran", contact: "0300-5056354", address: "L-84 Z.H ROAD Rawalpindi" },
+                            { id: 2, branch: "MUX", name: "Waheed", contact: "0311-1451405", address: "Shop # 383,384,385/A Shams Abad Colony Block A Opposite Jamia Masjid Mehria Multan" },
                             { id: 3, branch: "LHR", name: "Usman", contact: "0324-4485945", address: "Saeed apartments, 33/1 behind Queens Centre, Lahore" },
                             { id: 4, branch: "FSD", name: "Farhan", contact: "0322-6069657", address: "House 178/1, Block A, Opposite Sadiqiya Masjid, Peoples Colony Num 01, Faisalabad." },
                             { id: 5, branch: "PSW", name: "Babar", contact: "0313-9509875", address: "Hisense service center Muslim town 3 northern bypass Peshawar" },
                             { id: 6, branch: "SKT", name: "Zaigham", contact: "0336-6102030", address: "Taj pura Street Dara Araian Near Multi Cable Office Sialkot" },
                             { id: 7, branch: "KHI", name: "Faizan", contact: "021-34380492", address: "Plot- A/34, Block- 7/8, 4th Floor Hafeez Centre, KCHS Off, Shahrah-e-Faisal, Karachi." },
+                            { id: 8, branch: "MAR", name: "Usama", contact: "0317-9864377", address: "Trion service center opposite railway station mardan, near smart solar system Mardan" },
                         ].map((center, index) => (
                             <tr key={center.id} className={`hover:bg-gray-100 text-xs sm:text-sm ${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}>
                                 <td className="border px-2 sm:px-4 py-2 text-center">{center.id}</td>
